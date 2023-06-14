@@ -1,26 +1,30 @@
 import { useState }  from 'react';
+import { useDispatch } from 'react-redux';
 
-function Form(props) {
+function Form() {
     const [newTodoName, setNewTodoName] = useState('');
     
+    const dispatch = useDispatch();
+
     const setNewTodo = event => {
       setNewTodoName(event.target.value);
     }
   
     const addNewTodo = event => {
       event.preventDefault();
-  
-      props.addNewTodo({
+
+      dispatch({type: 'todo:add', todo: {
         name: newTodoName,
-        isDone: false
-      });
+        isDone: false,
+        id: Date.now()
+      }})
   
       setNewTodoName('');
     };
   
     return (
         <form onSubmit={addNewTodo}>
-            <input placeHolder='New todo...' onChange={setNewTodo} value={newTodoName}></input>
+            <input placeholder='Add new todo...' onChange={setNewTodo} value={newTodoName}></input>
             <input type="submit" value='+'></input>
         </form>
     );
