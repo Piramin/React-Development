@@ -1,5 +1,6 @@
 import { useState }  from 'react';
 import { useDispatch } from 'react-redux';
+import { add } from '../App/todosSlice'
 
 function Form() {
     const [newTodoName, setNewTodoName] = useState('');
@@ -13,11 +14,11 @@ function Form() {
     const addNewTodo = event => {
       event.preventDefault();
 
-      dispatch({type: 'todo:add', todo: {
+      dispatch(add({ todo: {
         name: newTodoName,
         isDone: false,
         id: Date.now()
-      }})
+      }}))
   
       setNewTodoName('');
     };
