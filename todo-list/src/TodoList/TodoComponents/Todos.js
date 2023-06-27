@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       {todos.map(todo => {
-          return <Todo name={todo.name}></Todo>;
+          return <Todo todo={todo}></Todo>;
         })}
     </div>
   );

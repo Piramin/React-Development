@@ -1,0 +1,29 @@
+.todo {
+    margin-bottom: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #0075ff;
+}
+
+.isDone {
+    text-decoration: line-through
+}
+
+.todo__name {
+    font-size: 20px;
+    color: #0075ff;
+    margin: 0 15px 0 0;
+}
+
+.todo__done {
+    height: 20px;
+    width: 20px;
+    margin: 0 15px 0 0;
+}
+
+.todo__remove {
+    border-color: #0075ff;
+    background-color: #0075ff;
+    color: white;
+}

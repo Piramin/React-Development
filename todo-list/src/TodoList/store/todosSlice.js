@@ -6,12 +6,10 @@ const todosSlice = createSlice({
     todos: []
   },
   reducers: {
-    add: (state, { payload} ) => {
-      const todos = [...state.todos];
-  
-      todos.unshift(payload.todo);
+    add: (state, { payload } ) => {
+      state.todos.unshift(payload.todo);
 
-      return { ...state, todos };
+      return state;
     },
     remove: (state, { payload }) => {
       let todos = [...state.todos];
@@ -21,14 +19,13 @@ const todosSlice = createSlice({
       return { ...state, todos };
     },
     done: (state, { payload }) => {
-      const todos = [...state.todos];
-  
-      const neededIndex = todos.find(todo => todo.id === payload.todo.id);
-      if(neededIndex !== -1) {
-          todos[neededIndex].isDone = payload.todo.isDone;
+      const neededIndex = state.todos.findIndex(todo => todo.id === payload.todo.id);
+
+      if (neededIndex !== -1) {
+          state.todos[neededIndex].isDone = payload.todo.isDone;
       }
 
-      return { ...state, todos };
+      return state;
     }
   }
 })
